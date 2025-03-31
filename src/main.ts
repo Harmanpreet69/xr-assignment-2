@@ -76,12 +76,16 @@ const createScene = async () => {
   return scene;
 };
 
-const scene = await createScene();
+const initalizeScene = async () => {
+  const scene = await createScene();
 
-engine.runRenderLoop(() => {
-  scene.render();
-});
+  engine.runRenderLoop(() => {
+    scene.render();
+  });
 
-window.addEventListener("resize", () => {
-  engine.resize();
-});
+  window.addEventListener("resize", () => {
+    engine.resize();
+  });
+};
+
+initalizeScene();
