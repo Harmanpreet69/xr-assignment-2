@@ -6,7 +6,6 @@ import {
   MeshBuilder,
   StandardMaterial,
   Texture,
-  Color3,
   Vector3,
   WebXRHitTest,
 } from "@babylonjs/core";
@@ -43,20 +42,14 @@ const createScene = async () => {
   const light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
   light.intensity = 0.7;
 
-  // Floor
-  const ground = MeshBuilder.CreateGround(
-    "ground",
-    { width: 10, height: 10 },
-    scene
-  );
-  const groundMaterial = new StandardMaterial("groundMaterial", scene);
-  groundMaterial.diffuseColor = new Color3(0.8, 0.8, 0.8);
-  ground.material = groundMaterial;
-
   // Example artifact (Sphere representing an exhibit piece)
   const artifact = MeshBuilder.CreateSphere("artifact", { diameter: 1 }, scene);
-  artifact.position.y = 1;
+
+  artifact.position = new Vector3(0, 1, 0);
+  artifact.rotate(new Vector3(1, 0, 0), 3.14);
+
   const artifactMaterial = new StandardMaterial("artifactMaterial", scene);
+
   artifactMaterial.diffuseTexture = new Texture(
     "https://assets.babylonjs.com/textures/earth.jpg",
     scene
