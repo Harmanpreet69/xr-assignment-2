@@ -3,13 +3,13 @@ import {
   Scene,
   ArcRotateCamera,
   HemisphericLight,
-  MeshBuilder,
-  StandardMaterial,
-  Texture,
   Vector3,
   WebXRHitTest,
 } from "@babylonjs/core";
 import "@babylonjs/loaders";
+import { createEarth } from "./artifacts/earth";
+import { createPlane } from "./artifacts/plane";
+import { loadBuddha } from "./artifacts/buddha";
 
 const canvasId = "renderCanvas";
 let canvas = document.getElementById(canvasId);
@@ -42,19 +42,10 @@ const createScene = async () => {
   const light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
   light.intensity = 0.7;
 
-  // Example artifact (Sphere representing an exhibit piece)
-  const artifact = MeshBuilder.CreateSphere("artifact", { diameter: 1 }, scene);
-
-  artifact.position = new Vector3(0, 1, 0);
-  artifact.rotate(new Vector3(1, 0, 0), 3.14);
-
-  const artifactMaterial = new StandardMaterial("artifactMaterial", scene);
-
-  artifactMaterial.diffuseTexture = new Texture(
-    "https://assets.babylonjs.com/textures/earth.jpg",
-    scene
-  );
-  artifact.material = artifactMaterial;
+  // Creating and loading artifacts
+  createPlane({ scene });
+  createEarth({ scene });
+  await loadBuddha({ scene });
 
   // XR Support
   const xr = await scene.createDefaultXRExperienceAsync({
