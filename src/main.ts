@@ -8,7 +8,7 @@ import {
 } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { createEarth } from "./artifacts/earth";
-import { createPlane } from "./artifacts/plane";
+// import { createPlane } from "./artifacts/plane";
 import { loadBuddha } from "./artifacts/buddha";
 import { loadShuttle } from "./artifacts/space_shuttle";
 import { loadWrightFlyer } from "./artifacts/wright_flyer";
@@ -45,7 +45,7 @@ const createScene = async () => {
   light.intensity = 0.7;
 
   // Creating and loading artifacts
-  createPlane({ scene });
+  // createPlane({ scene });
   createEarth({ scene });
   await loadBuddha({ scene });
   await loadShuttle({ scene });

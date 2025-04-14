@@ -8,9 +8,9 @@ export const loadBuddha = async ({ scene }: { scene: Scene }) => {
   const mesh = await ImportMeshAsync(url, scene);
 
   const buddha = mesh.meshes[0];
-  buddha.position = new Vector3(2, 1);
+  buddha.position = new Vector3(-1, 1, -2);
   buddha.scaling = new Vector3(0.01, 0.01, 0.01);
-  buddha.rotate(new Vector3(0, 1, 0), 3.14);
+  buddha.rotate(new Vector3(0, 1, 0), 4.7); // Rotate to face the camera
 
   // GUI setup
   const guiTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");

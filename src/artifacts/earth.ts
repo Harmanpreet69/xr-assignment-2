@@ -10,7 +10,7 @@ import { AdvancedDynamicTexture, Rectangle, TextBlock } from "@babylonjs/gui";
 
 export const createEarth = ({ scene }: { scene: Scene }): Mesh => {
   const artifact = MeshBuilder.CreateSphere("artifact", { diameter: 1 }, scene);
-  artifact.position = new Vector3(0, 1, 0);
+  artifact.position = new Vector3(-4, 1, 2);
   artifact.rotate(new Vector3(1, 0, 0), 3.14);
 
   const artifactMaterial = new StandardMaterial("artifactMaterial", scene);

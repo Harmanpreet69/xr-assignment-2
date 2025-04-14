@@ -16,9 +16,9 @@ export const loadShuttle = async ({ scene }: { scene: Scene }) => {
   const shuttle = result.meshes[0];
 
   shuttle.name = "OrbiterShuttleDiscovery";
-  shuttle.position = new Vector3(5, 6, 0);
-  shuttle.scaling = new Vector3(0.5, 0.5, 0.5);
-  shuttle.rotate(new Vector3(0, 1, 0), 3.14);
+  shuttle.position = new Vector3(5, 2, 0);
+  shuttle.scaling = new Vector3(0.25, 0.25, 0.25);
+  shuttle.rotate(new Vector3(0, 1, 0), 1.85);
 
   // GUI setup
   const guiTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
@@ -34,7 +34,7 @@ export const loadShuttle = async ({ scene }: { scene: Scene }) => {
   guiTexture.addControl(titleRect);
 
   const titleText = new TextBlock();
-  titleText.text = "Orbiter Shuttle Discovery (1/2 Scale)";
+  titleText.text = "Orbiter Shuttle Discovery (1/4 Scale)";
   titleText.color = "white";
   titleText.fontSize = 16;
   titleText.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
