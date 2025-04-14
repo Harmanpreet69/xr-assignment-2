@@ -61,6 +61,10 @@ const createScene = async () => {
 
   xr.baseExperience.featuresManager.enableFeature(WebXRHitTest, "latest");
 
+  scene.meshes.forEach((mesh) => {
+    console.log(`Mesh: ${mesh.name}`);
+  });
+
   return scene;
 };
 

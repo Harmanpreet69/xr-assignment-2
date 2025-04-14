@@ -13,8 +13,9 @@ export const loadWrightFlyer = async ({ scene }: { scene: Scene }) => {
   const result = await ImportMeshAsync(url, scene);
   const wrightFlyer = result.meshes[0];
 
+  wrightFlyer.name = "WrightFlyer";
   wrightFlyer.position = new Vector3(0, 2, 6);
-  wrightFlyer.scaling = new Vector3(0.5, 0.5, 0.5);
+  wrightFlyer.scaling = new Vector3(1, 1, 1);
   wrightFlyer.rotate(new Vector3(0, 1, 0), 3.14);
 
   // GUI setup
@@ -64,7 +65,5 @@ export const loadWrightFlyer = async ({ scene }: { scene: Scene }) => {
   descRect.addControl(descText);
 
   descRect.linkWithMesh(wrightFlyer);
-  descRect.linkOffsetY = -70;
-
-  return wrightFlyer;
+  descRect.linkOffsetY = -50;
 };

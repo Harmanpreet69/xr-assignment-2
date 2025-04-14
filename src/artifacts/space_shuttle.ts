@@ -8,11 +8,14 @@ import {
 import { importPrefix } from "../importPrefix";
 
 export const loadShuttle = async ({ scene }: { scene: Scene }) => {
-  const url = importPrefix + "/models/Orbiter_Space_Shuttle_Discovery.glb";
+  const url =
+    importPrefix +
+    "/models/Orbiter_Space_Shuttle_OV-103_Discovery-150k-4096.glb";
 
   const result = await ImportMeshAsync(url, scene);
   const shuttle = result.meshes[0];
 
+  shuttle.name = "OrbiterShuttleDiscovery";
   shuttle.position = new Vector3(5, 6, 0);
   shuttle.scaling = new Vector3(0.5, 0.5, 0.5);
   shuttle.rotate(new Vector3(0, 1, 0), 3.14);
@@ -64,6 +67,4 @@ export const loadShuttle = async ({ scene }: { scene: Scene }) => {
 
   descRect.linkWithMesh(shuttle);
   descRect.linkOffsetY = -70;
-
-  return shuttle;
 };
