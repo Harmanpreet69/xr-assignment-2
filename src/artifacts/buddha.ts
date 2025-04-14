@@ -1,17 +1,37 @@
 import { ImportMeshAsync, Scene, Vector3 } from "@babylonjs/core";
+import { AdvancedDynamicTexture, Rectangle, TextBlock } from "@babylonjs/gui";
 import "@babylonjs/loaders/OBJ/objFileLoader";
-
-const productionImportPrefix = import.meta.env.PROD
-  ? "https://harmanpreet69.github.io/xr-assignment-2"
-  : "public";
+import { importPrefix } from "../importPrefix";
 
 export const loadBuddha = async ({ scene }: { scene: Scene }) => {
-  const url = productionImportPrefix + "/models/buda_head.obj";
+  const url = importPrefix + "/models/buda_head.obj";
   const mesh = await ImportMeshAsync(url, scene);
 
-  mesh.meshes[0].position = new Vector3(2, 1);
-  mesh.meshes[0].scaling = new Vector3(0.01, 0.01, 0.01);
-  mesh.meshes[0].rotate(new Vector3(0, 1, 0), 3.14);
+  const buddha = mesh.meshes[0];
+  buddha.position = new Vector3(2, 1);
+  buddha.scaling = new Vector3(0.01, 0.01, 0.01);
+  buddha.rotate(new Vector3(0, 1, 0), 3.14);
 
-  return mesh.meshes[0];
+  // GUI setup
+  const guiTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+  const rect = new Rectangle();
+  rect.width = "140px";
+  rect.height = "40px";
+  rect.cornerRadius = 10;
+  rect.color = "white";
+  rect.thickness = 2;
+  rect.background = "black";
+  guiTexture.addControl(rect);
+
+  const label = new TextBlock();
+  label.text = "Buddha Head";
+  label.color = "white";
+  label.fontSize = 14;
+  rect.addControl(label);
+
+  rect.linkWithMesh(buddha);
+  rect.linkOffsetY = -80; // Adjust so it floats above the head
+
+  return buddha;
 };

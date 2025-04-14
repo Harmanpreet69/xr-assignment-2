@@ -3,7 +3,7 @@ import { MeshBuilder, Scene, Vector3 } from "@babylonjs/core";
 export const createPlane = ({ scene }: { scene: Scene }) => {
   const plane = MeshBuilder.CreatePlane(
     "myPlane",
-    { width: 10, height: 10 },
+    { width: 100, height: 100 },
     scene
   );
 

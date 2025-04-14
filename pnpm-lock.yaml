@@ -11,9 +11,15 @@ importers:
       '@babylonjs/core':
         specifier: ^8.0.1
         version: 8.0.1
+      '@babylonjs/gui':
+        specifier: ^8.2.0
+        version: 8.2.0(@babylonjs/core@8.0.1)
       '@babylonjs/loaders':
         specifier: ^8.0.1
         version: 8.0.1(@babylonjs/core@8.0.1)(babylonjs-gltf2interface@8.0.1)
+      install:
+        specifier: ^0.13.0
+        version: 0.13.0
     devDependencies:
       typescript:
         specifier: ~5.7.2
@@ -26,6 +32,11 @@ packages:
 
   '@babylonjs/core@8.0.1':
     resolution: {integrity: sha512-00XJJgKJSLPY9eOE4MPZWqSxtifZS0oiKZyHKmybnXdYDtXCmh4ehyL2vguaE8MP1lqQEJ7RTC7gqP7ru/7vjw==}
+
+  '@babylonjs/gui@8.2.0':
+    resolution: {integrity: sha512-FRDri1Hvxxk/JKgjjEwQAnFLthRzRdlFhPQl9oyjddOEABI3krNC5xaRlw4NF537uILpJ7uA/giCHOKzp392Lw==}
+    peerDependencies:
+      '@babylonjs/core': ^8.0.0
 
   '@babylonjs/loaders@8.0.1':
     resolution: {integrity: sha512-+uKNIF6pkjYuRQOefzrabT9jpdyb5r7waq8Rm5qvjGHoqjmTRCuy5d1w8PnZiEgelWnuRVpHWLDg9/8Wi4GW3g==}
@@ -299,6 +310,10 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
+  install@0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
+
   nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -368,6 +383,10 @@ packages:
 snapshots:
 
   '@babylonjs/core@8.0.1': {}
+
+  '@babylonjs/gui@8.2.0(@babylonjs/core@8.0.1)':
+    dependencies:
+      '@babylonjs/core': 8.0.1
 
   '@babylonjs/loaders@8.0.1(@babylonjs/core@8.0.1)(babylonjs-gltf2interface@8.0.1)':
     dependencies:
@@ -543,6 +562,8 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  install@0.13.0: {}
 
   nanoid@3.3.11: {}
 
