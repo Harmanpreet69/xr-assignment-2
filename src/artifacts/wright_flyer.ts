@@ -8,14 +8,14 @@ import {
 import { importPrefix } from "../importPrefix";
 
 export const loadWrightFlyer = async ({ scene }: { scene: Scene }) => {
-  const url = importPrefix + "/models/1903WrightFlyer.glb";
+  const url = importPrefix + "/models/1903WrightFlyer-150k-4096.gltf";
 
   const result = await ImportMeshAsync(url, scene);
   const wrightFlyer = result.meshes[0];
 
   wrightFlyer.name = "WrightFlyer";
   wrightFlyer.position = new Vector3(0, 2, 6);
-  wrightFlyer.scaling = new Vector3(1, 1, 1);
+  wrightFlyer.scaling = new Vector3(0.5, 0.5, 0.5);
   wrightFlyer.rotate(new Vector3(0, 1, 0), 3.14);
 
   // GUI setup
@@ -32,7 +32,7 @@ export const loadWrightFlyer = async ({ scene }: { scene: Scene }) => {
   guiTexture.addControl(titleRect);
 
   const titleText = new TextBlock();
-  titleText.text = "1903 Wright Flyer";
+  titleText.text = "1903 Wright Flyer (1/2 Scale)";
   titleText.color = "white";
   titleText.fontSize = 16;
   titleText.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;

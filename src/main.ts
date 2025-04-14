@@ -45,7 +45,7 @@ const createScene = async () => {
   light.intensity = 0.7;
 
   // Creating and loading artifacts
-  createPlane({ scene });
+  // createPlane({ scene });
   createEarth({ scene });
   await loadBuddha({ scene });
   await loadShuttle({ scene });
