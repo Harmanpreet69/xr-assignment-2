@@ -14,7 +14,7 @@ export const loadTriceratops = async ({ scene }: { scene: Scene }) => {
   const result = await ImportMeshAsync(url, scene);
   const triceratops = result.meshes[0];
 
-  triceratops.name = "BellX1";
+  triceratops.name = "Triceratops";
   triceratops.position = new Vector3(-8, 0, 0);
   triceratops.scaling = new Vector3(1, 1, 1);
   triceratops.rotate(new Vector3(0, 1, 0), 1.85);
