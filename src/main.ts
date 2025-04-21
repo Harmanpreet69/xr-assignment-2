@@ -1,17 +1,19 @@
 import {
   Engine,
   Scene,
-  ArcRotateCamera,
   HemisphericLight,
   Vector3,
   WebXRHitTest,
+  WebXRFeatureName,
+  UniversalCamera,
 } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import { createEarth } from "./artifacts/earth";
 // import { createPlane } from "./artifacts/plane";
 import { loadBuddha } from "./artifacts/buddha";
 import { loadShuttle } from "./artifacts/space_shuttle";
-import { loadWrightFlyer } from "./artifacts/wright_flyer";
+import { loadBellX1 } from "./artifacts/bellX1";
+import { loadTriceratops } from "./artifacts/Triceratops";
 
 const canvasId = "renderCanvas";
 let canvas = document.getElementById(canvasId);
@@ -30,14 +32,7 @@ const createScene = async () => {
   const scene = new Scene(engine);
 
   // Camera setup
-  const camera = new ArcRotateCamera(
-    "Camera",
-    Math.PI / 2,
-    Math.PI / 3,
-    10,
-    new Vector3(0, 1, 0),
-    scene
-  );
+  const camera = new UniversalCamera("Camera", new Vector3(0, 1, -8));
   camera.attachControl(canvas, true);
 
   // Lighting
@@ -49,7 +44,8 @@ const createScene = async () => {
   createEarth({ scene });
   await loadBuddha({ scene });
   await loadShuttle({ scene });
-  await loadWrightFlyer({ scene });
+  await loadBellX1({ scene });
+  await loadTriceratops({ scene });
 
   // XR Support
   const xr = await scene.createDefaultXRExperienceAsync({
@@ -61,9 +57,14 @@ const createScene = async () => {
 
   xr.baseExperience.featuresManager.enableFeature(WebXRHitTest, "latest");
 
-  scene.meshes.forEach((mesh) => {
-    console.log(`Mesh: ${mesh.name}`);
-  });
+  xr.baseExperience.featuresManager.enableFeature(
+    WebXRFeatureName.TELEPORTATION,
+    "latest",
+    {
+      xrInput: xr.input,
+      floorMeshes: scene.meshes,
+    }
+  );
 
   return scene;
 };
